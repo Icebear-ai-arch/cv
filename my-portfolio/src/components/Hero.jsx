@@ -52,7 +52,11 @@ function Hero() {
             View My Projects <Code2 size={18} />
           </a>
 
-          <a href="/resume.pdf" className="btn btn-outline" download>
+          <a
+            href="/resume.pdf"
+            className="btn btn-outline"
+            download="CarabuenaJustfer-resume.pdf"
+          >
             Download CV <Download size={18} />
           </a>
         </div>
