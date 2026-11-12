@@ -12,6 +12,16 @@ function GitHubMark() {
 function Projects() {
   const projects = [
     {
+      title: "YourSpace",
+      category: "Social Networking Web Application",
+      description:
+        "A community platform with user authentication, profiles, posts, comments, and image/video sharing built for social engagement and real-time interaction.",
+      technologies: ["React", "JavaScript", "Node.js", "Express.js", "Sequelize", "TiDB Cloud", "Socket.IO"],
+      image: encodeURI("/images/YourSpace/yourspace.png"),
+      github: "https://github.com/Icebear-ai-arch",
+      demo: "https://yourspace-mu.vercel.app/",
+    },
+    {
       title: "BPAMIS",
       category: "Web Application",
       description:
