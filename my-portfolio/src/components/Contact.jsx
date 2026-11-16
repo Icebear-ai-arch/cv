@@ -40,7 +40,7 @@ function Contact() {
 
     try {
       const response = await fetch(
-        "https://formsubmit.co/ajax/carabuenajustfer@gmail.com",
+        "https://formsubmit.co/ajax/86606150d6292796a3606c4ecd6e26f1",
         {
           method: "POST",
           headers: {
