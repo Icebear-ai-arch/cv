@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -10,6 +11,7 @@ import Contact from "./components/Contact";
 import "./App.css";
 
 const currentYear = new Date().getFullYear();
+const blackHoleClickLimit = 7;
 
 const stations = [
   { id: "home", label: "Launch" },
@@ -22,6 +24,39 @@ const stations = [
 
 function App() {
   const [activeStation, setActiveStation] = useState("home");
+  const [blackHoleClicks, setBlackHoleClicks] = useState(0);
+  const [isBlackHoleSwallowing, setIsBlackHoleSwallowing] = useState(false);
+
+  useEffect(() => {
+    if (!isBlackHoleSwallowing) return undefined;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    const scrollTimer = window.setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.getElementById("home")?.focus({ preventScroll: true });
+    }, prefersReducedMotion ? 0 : 1400);
+    const resetTimer = window.setTimeout(() => {
+      setBlackHoleClicks(0);
+      setIsBlackHoleSwallowing(false);
+    }, prefersReducedMotion ? 0 : 2200);
+
+    return () => {
+      window.clearTimeout(scrollTimer);
+      window.clearTimeout(resetTimer);
+    };
+  }, [isBlackHoleSwallowing]);
+
+  const feedBlackHole = () => {
+    if (isBlackHoleSwallowing) return;
+
+    const nextClickCount = blackHoleClicks + 1;
+    setBlackHoleClicks(nextClickCount);
+    if (nextClickCount === blackHoleClickLimit) {
+      setIsBlackHoleSwallowing(true);
+    }
+  };
 
   useEffect(() => {
     const sections = stations
@@ -188,19 +223,34 @@ function App() {
       </main>
 
       <footer className="footer">
-        <div className="black-hole-scene" aria-hidden="true">
+        <button
+          className="black-hole-button"
+          type="button"
+          onClick={feedBlackHole}
+          disabled={isBlackHoleSwallowing}
+          style={{ "--black-hole-scale": 1 + blackHoleClicks * 0.25 }}
+          aria-label={`Feed the black hole, ${blackHoleClicks} of ${blackHoleClickLimit} clicks`}
+        >
           <span className="black-hole-accretion"></span>
           <span className="black-hole"></span>
           <span className="black-hole-particle particle-one"></span>
           <span className="black-hole-particle particle-two"></span>
           <span className="black-hole-particle particle-three"></span>
           <span className="black-hole-particle particle-four"></span>
-        </div>
+        </button>
+        <p className="black-hole-hint" aria-live="polite">
+          Feed the black hole: {blackHoleClicks}/{blackHoleClickLimit}
+        </p>
         <p>
           © {currentYear} Justfer Carabuena.
           Built with React.js
         </p>
       </footer>
+      {isBlackHoleSwallowing &&
+        createPortal(
+          <div className="black-hole-consume" aria-hidden="true"></div>,
+          document.body
+        )}
     </div>
   );
 }

@@ -24,7 +24,7 @@ function LinkedInMark() {
 
 function Hero() {
   return (
-    <section id="home" className="hero section">
+    <section id="home" className="hero section" tabIndex={-1}>
       <div className="hero-content">
         <div className="availability">
           <span className="status-dot"></span>
