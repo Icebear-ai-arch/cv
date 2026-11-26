@@ -3,6 +3,7 @@ import {
   ArrowDown,
   Download,
   Code2,
+  Orbit,
 } from "lucide-react";
 
 function GitHubMark() {
@@ -52,11 +53,7 @@ function Hero() {
             View My Projects <Code2 size={18} />
           </a>
 
-          <a
-            href="/resume.pdf"
-            className="btn btn-outline"
-            download="CarabuenaJustfer-resume.pdf"
-          >
+          <a href="/resume.pdf" className="btn btn-outline" download>
             Download CV <Download size={18} />
           </a>
         </div>
@@ -83,11 +80,31 @@ function Hero() {
       </div>
 
       <div className="hero-visual">
-        <div className="glow-circle"></div>
+        <div className="visual-caption">
+          <Orbit size={16} />
+          <span>MISSION 001</span>
+          <span className="caption-divider">/</span>
+          <span>EARTH ORBIT</span>
+        </div>
+        <div className="planet-system" aria-hidden="true">
+          <div className="orbit orbit-one"></div>
+          <div className="orbit orbit-two"></div>
+          <div className="planet">
+            <span className="planet-glow"></span>
+            <span className="planet-land"></span>
+            <span className="planet-shadow"></span>
+          </div>
+          <div className="moon"></div>
+          <div className="satellite">
+            <span></span>
+          </div>
+          <span className="constellation constellation-one"></span>
+          <span className="constellation constellation-two"></span>
+        </div>
         <div className="code-card">
           <div className="code-header">
             <span></span><span></span><span></span>
-            <p>developer.js</p>
+            <p>crew-profile.js</p>
           </div>
 
           <div className="code-content">
@@ -123,7 +140,7 @@ function Hero() {
 
       <a href="#about" className="scroll-indicator">
         <ArrowDown size={20} />
-        Scroll to explore
+        Scroll to drift through my universe
       </a>
     </section>
   );
