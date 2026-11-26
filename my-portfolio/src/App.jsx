@@ -83,12 +83,22 @@ function App() {
     const handlePointerMove = (event) => {
       const lookX = ((event.clientX / window.innerWidth) - 0.5) * 10;
       const lookY = ((event.clientY / window.innerHeight) - 0.5) * 6;
+      const satelliteX = ((event.clientX / window.innerWidth) - 0.5) * 90;
+      const satelliteY = ((event.clientY / window.innerHeight) - 0.5) * 60;
       document.documentElement.style.setProperty("--look-x", `${lookX}px`);
       document.documentElement.style.setProperty(
         "--look-x-reverse",
         `${lookX * -1}px`
       );
       document.documentElement.style.setProperty("--look-y", `${lookY}px`);
+      document.documentElement.style.setProperty(
+        "--satellite-x",
+        `${satelliteX}px`
+      );
+      document.documentElement.style.setProperty(
+        "--satellite-y",
+        `${satelliteY}px`
+      );
     };
 
     updateScrollProgress();

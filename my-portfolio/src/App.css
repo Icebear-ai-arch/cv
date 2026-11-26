@@ -684,8 +684,8 @@ html.reveal-ready .section:not(.hero).is-visible {
   border: 1px solid #bae6fd;
   background: #64748b;
   box-shadow: -16px 2px 0 -3px #1d4ed8, 16px 2px 0 -3px #1d4ed8;
-  transform: rotate(-28deg);
-  animation: satellite-drift 8s ease-in-out infinite;
+  transform: translate3d(var(--satellite-x, 0px), var(--satellite-y, 0px), 0) rotate(-28deg);
+  transition: transform 0.2s ease-out;
 }
 
 .satellite span {
@@ -1220,15 +1220,6 @@ html.reveal-ready .section:not(.hero).is-visible {
   }
 }
 
-@keyframes satellite-drift {
-  0%, 100% {
-    transform: translate(0, 0) rotate(-28deg);
-  }
-  50% {
-    transform: translate(-9px, 6px) rotate(-20deg);
-  }
-}
-
 /* RESPONSIVE DESIGN */
 
 @media (max-width: 900px) {
@@ -1386,6 +1377,11 @@ html.reveal-ready .section:not(.hero).is-visible {
   .planet-system,
   .satellite {
     animation: none !important;
+  }
+
+  .satellite {
+    transform: rotate(-28deg);
+    transition: none;
   }
 
   .scene-orbit,

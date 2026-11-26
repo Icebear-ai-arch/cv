@@ -1,6 +1,4 @@
-
-I wamt
-
+const cheerio = require("cheerio");
 async function printGrid(url) {
     try {
         const response = await fetch(url);
