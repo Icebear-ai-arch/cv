@@ -188,6 +188,14 @@ function App() {
       </main>
 
       <footer className="footer">
+        <div className="black-hole-scene" aria-hidden="true">
+          <span className="black-hole-accretion"></span>
+          <span className="black-hole"></span>
+          <span className="black-hole-particle particle-one"></span>
+          <span className="black-hole-particle particle-two"></span>
+          <span className="black-hole-particle particle-three"></span>
+          <span className="black-hole-particle particle-four"></span>
+        </div>
         <p>
           © {currentYear} Justfer Carabuena.
           Built with React.js
